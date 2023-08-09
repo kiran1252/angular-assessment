@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-lg-6">
+        <form [formGroup]="newOrder" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Order Date</label>
+                <input type="date" class="form-control" formControlName="date" id="date">
+                <div class="red"
+                    *ngIf="!newOrder.controls.date.valid && (newOrder.controls.date.dirty || newOrder.controls.date.touched)">
+                    field is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Total Amount Qty</label>
+                <input type="text" class="form-control" formControlName="qty" id="qty" placeholder="Total Amount Qty">
+                <div class="red"
+                    *ngIf="!newOrder.controls.qty.valid && (newOrder.controls.qty.dirty || newOrder.controls.qty.touched)">
+                    field is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Unit Price</label>
+                <input type="text" class="form-control" formControlName="unitPrice" id="unitPrice"
+                    placeholder="Unit Price">
+                <div class="red"
+                    *ngIf="!newOrder.controls.unitPrice.valid && (newOrder.controls.unitPrice.dirty || newOrder.controls.unitPrice.touched)">
+                    field is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="paperType" class="form-label">Vendor</label>
+                <select class="form-select" formControlName="vendorId" aria-label="Default select example" >
+                    <option *ngFor="let item of vendorList" value="{{item.id}}">{{item.vendorName}}</option>
+
+                </select>
+                <div class="red"
+                    *ngIf="!newOrder.controls.vendorId.valid && (newOrder.controls.vendorId.dirty || newOrder.controls.vendorId.touched)">
+                    field is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Lot Number</label>
+                <input type="text" class="form-control" formControlName="lotNumber" id="lotNumber"
+                    placeholder="Lot Number">
+                <div class="red"
+                    *ngIf="!newOrder.controls.lotNumber.valid && (newOrder.controls.lotNumber.dirty || newOrder.controls.lotNumber.touched)">
+                    field is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Manufacturing Date</label>
+                <input type="date" class="form-control" formControlName="manufacturingDate" id="date">
+                <div class="red"
+                    *ngIf="!newOrder.controls.manufacturingDate.valid && (newOrder.controls.manufacturingDate.dirty || newOrder.controls.manufacturingDate.touched)">
+                    field is required
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2"> {{editOrderId ? 'Update' : 'Add'}}</button>
+            <button type="button" class="btn btn-danger" [routerLink]="[ '/order']">Cancel</button>
+        </form>
+    </div>
+</div>

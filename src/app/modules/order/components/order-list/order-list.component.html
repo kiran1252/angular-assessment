@@ -1,0 +1,33 @@
+<h4>Orders <button type="button" class="btn btn-primary mb-2" [routerLink]="[ '/order/new' ]" style="float: right;">New Order</button></h4>
+<table class="table table-dark table-hover mt-2">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Vendor Name</th>
+            <th scope="col">Lot Number</th>
+            <th scope="col">Manufacturing Date</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Expiry Date</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of orderList">
+            <td>{{item.orderNmuber}}</td>
+            <td>{{item.date | date: 'dd/MM/yyyy'}}</td>
+            <td>{{item.vendorName}}</td>
+            <td>{{item.lotNumber}}</td>
+            <td>{{item.manufacturingDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{item.qty}}</td>
+            <td>{{item.unitPrice}}</td>
+            <td>{{item.expiryDate | date: 'dd/MM/yyyy'}}</td>
+            <td><button type="button" class="btn btn-primary " (click)="editOrder(item.id)">Edit</button>
+            <button type="button" class="btn btn-danger ml-2" (click)="deleteOrder(item,false)" *ngIf="item.isActive">
+                    Delete</button>
+           <button type="button" class="btn btn-primary ml-2" (click)="deleteOrder(item,true)"
+                    *ngIf="!item.isActive">Restore</button></td>
+        </tr>
+    </tbody>
+</table>

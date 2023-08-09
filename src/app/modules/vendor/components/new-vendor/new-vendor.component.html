@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-6">
+        <form [formGroup]="newVendor" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Vendor Name</label>
+                <input type="text" class="form-control" formControlName="vendorName" id="name"
+                    placeholder="Vendor Name">
+                <div class="red"
+                    *ngIf="!newVendor.controls.vendorName.valid && (newVendor.controls.vendorName.dirty ||newVendor.controls.vendorName.touched)">
+                    field is required
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="paperType" class="form-label">Paper Type</label>
+                <select class="form-select" formControlName="typeOfPaper" aria-label="Default select example">
+                    <option value="0">Open this select menu</option>
+                    <option value="1">Recycled Paper</option>
+                    <option value="2">Paper Sugar Cane</option>
+                    <option value="3">Pine Wood Paper</option>
+                </select>
+                <div class="red"
+                    *ngIf="!newVendor.controls.typeOfPaper.valid && (newVendor.controls.typeOfPaper.dirty ||newVendor.controls.typeOfPaper.touched)">
+                    field is required
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2"> {{editVendorId ? 'Update' : 'Add'}}</button>
+            <button type="button" class="btn btn-danger" [routerLink]="[ '/vendor']">Cancel</button>
+        </form>
+    </div>
+</div>

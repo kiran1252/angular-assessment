@@ -1,0 +1,20 @@
+<h4>Vendors <button type="button" class="btn btn-primary mb-2" [routerLink]="[ '/vendor/new' ]" style="float: right;">Add New
+    Vendor</button></h4>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Vendor Name</th>
+            <th scope="col">Paper Type</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of vendorList">
+            <td>{{item.id}}</td>
+            <td>{{item.vendorName}}</td>
+            <td>{{getPaperType(item.typeOfPaper)}}</td>
+            <td><button type="button" class="btn btn-primary" (click)="editVendor(item.id)">Edit</button></td>
+        </tr>
+    </tbody>
+</table>
